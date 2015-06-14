@@ -2,7 +2,7 @@
 " Eduardo San Martin Morote aka posva
 
 " Load plugins rigth away
-source ./vim-plugins.vim
+source $HOME/gotta-go-fast-vim/vim-plugins.vim
 
 " General options {
 set nu " Show number lines
@@ -101,7 +101,7 @@ vnoremap > >gv
 " Use , instead of \
 let mapleader = ','
 
-" Disable arrow keys
+" Disable arrow keys in normal mode
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
@@ -222,6 +222,14 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_python_checkers = ['python', 'python3']
 let g:syntastic_python_python_exec = 'python3'
 " }
+" NERD Tree {
+"Open NerdTree with Ctrl+H
+nmap <C-H> :NERDTreeToggle<CR>
+" Autoclose vim when only NerdTree is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Open Nerdtree when nothing is opened
+" autocmd vimenter * if !argc() | NERDTree | endif
+" }
 " NERD commenter {
 map <F5> <leader>c<space>
 " }
@@ -266,7 +274,7 @@ else
 endif
 " }
 " Ag {
-nmap º :Ag <c-r>=expand("<cword>")<cr><cr>
+nmap <leader>` :Ag <c-r>=expand("<cword>")<cr><cr>
 nnoremap <space>/ :Ag
 " }
 " textmanip {

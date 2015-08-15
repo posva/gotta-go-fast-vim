@@ -79,7 +79,7 @@ if [[ ! -x $(which ag) ]]; then
   fi
 
   working -n "Installing ag"
-  log_cmd ag $INSTALL || fail "ag install failed. Check logs at $LOG_DIR"
+  log_cmd ag "$INSTALL" || fail "ag install failed. Check logs at $LOG_DIR"
 fi
 
 finish
